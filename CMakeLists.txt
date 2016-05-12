@@ -1,6 +1,11 @@
 cmake_minimum_required(VERSION 3.4)
 project(HackerRank)
 
+
+#cmake -G "Unix Makefiles" .
+#set(CMAKE_GENERATOR "Unix Makefiles")
+message("generator is set to ${CMAKE_GENERATOR}")
+
 set(CMAKE_VERBOSE_MAKEFILE TRUE)
 
 set(CMAKE_CXX_COMPILER clang++)
@@ -13,7 +18,7 @@ set(BINARY_DIR ${PROJECT_SOURCE_DIR}/bin)
 
 set(C_CODE_SOURCE_DIR ${PROJECT_SOURCE_DIR}/c_code)
 add_custom_target(solve_me_first_c COMMAND make -C ${C_CODE_SOURCE_DIR} BIN_DIR=${BINARY_DIR})
-add_custom_target(simeple_array_sum_c COMMAND make -C ${C_CODE_SOURCE_DIR} BIN_DIR=${BINARY_DIR})
+add_custom_target(simple_array_sum_c COMMAND make -C ${C_CODE_SOURCE_DIR} BIN_DIR=${BINARY_DIR})
 
 set(CPP_CODE_SOURCE_DIR ${PROJECT_SOURCE_DIR}/cpp_code)
 add_custom_target(solve_me_first_cpp COMMAND make -C ${CPP_CODE_SOURCE_DIR} BIN_DIR=${BINARY_DIR})
@@ -23,6 +28,9 @@ add_custom_target(solve_me_first_d COMMAND make -C ${D_CODE_SOURCE_DIR} BIN_DIR=
 
 set(GO_CODE_SOURCE_DIR ${PROJECT_SOURCE_DIR}/go_code)
 add_custom_target(solve_me_first_go COMMAND make -C ${GO_CODE_SOURCE_DIR} BIN_DIR=${BINARY_DIR})
+
+set(SWIFT_CODE_SOURCE_DIR ${PROJECT_SOURCE_DIR}/swift_code)
+add_custom_target(solve_me_first_swift COMMAND make -C ${SWIFT_CODE_SOURCE_DIR} BIN_DIR=${BINARY_DIR})
 
 set(SOURCE_FILES main.cpp)
 add_executable(HackerRank ${SOURCE_FILES})
